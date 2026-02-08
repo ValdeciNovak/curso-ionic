@@ -32,7 +32,7 @@ import {
   bookmarkOutline,
   bookmarkSharp,
 } from 'ionicons/icons';
-import { homeOutline, peopleOutline } from 'ionicons/icons';
+import { homeOutline, peopleOutline , locationOutline} from 'ionicons/icons';
 
 @Component({
   selector: 'app-root',
@@ -58,17 +58,27 @@ import { homeOutline, peopleOutline } from 'ionicons/icons';
 })
 export class AppComponent {
   public appPages = [
-    { title: 'Home', url: '/home', icon: 'home-outline' },
+    { 
+      title: 'Home', 
+      url: '/home', 
+      icon: 'home-outline' 
+    },
     {
       title: 'Customers',
       url: '/customers',
       icon: 'people-outline',
+    },
+    {
+      title: 'Cities',
+      url: '/cities',
+      icon: 'location-outline',
     },
   ];
   constructor() {
     addIcons({
       homeOutline,
       peopleOutline,
+      locationOutline,
 
       mailOutline,
       mailSharp,

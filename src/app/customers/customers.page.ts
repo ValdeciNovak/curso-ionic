@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonItem, IonLabel, IonList, IonAvatar } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonItem, IonLabel, IonList, IonAvatar, IonSearchbar } from '@ionic/angular/standalone';
 import { RouterLink } from '@angular/router';
 
 import { HttpClient } from '@angular/common/http';
@@ -12,7 +12,7 @@ import { map }from "rxjs/operators";
   templateUrl: './customers.page.html',
   styleUrls: ['./customers.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, RouterLink, IonItem, IonLabel, IonList, IonAvatar]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, RouterLink, IonItem, IonLabel, IonList, IonAvatar, IonSearchbar]
 })
 export class CustomersPage implements OnInit {
 
@@ -20,17 +20,22 @@ export class CustomersPage implements OnInit {
 
   permission: boolean = false;
 
+  searchedUser: any;
+
   constructor(
     private http: HttpClient
   ) { }
 
   ngOnInit() {
-    this.permission = true;
-
+  this.permission = true;
+  
   this.getUsers().subscribe(res=>{
     console.log(res);
     this.users=res;
+  this.searchedUser=this.users;
   })
+
+
   }
 
   getUsers() {
@@ -43,4 +48,13 @@ export class CustomersPage implements OnInit {
     );
   }
 
+  searchCustomer(event: any) {
+    const text = event.target.value;  
+    this.searchedUser=this.users;
+    if (text && text.trim() !== '') {
+      this.searchedUser = this.searchedUser.filter((user: any) => {
+        return user.name.toLowerCase().indexOf(text.toLowerCase()) > -1;
+      });
+  }
+}
 }

@@ -1,0 +1,16 @@
+{
+  "data": [
+    {
+      "name": "Alicante",
+      "image": "alicante.jpg"
+    },
+    {
+      "name": "Barcelona",
+      "image": "barcelona.jpg"
+    },
+    {
+      "name": "Valencia",
+      "image": "valencia.jpg"
+    }
+  ]
+}
