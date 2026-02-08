@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="mycolor">
+    <ion-title>customers</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="container">
+    <button ion-button [routerLink]="['/home']" class="btn">Go to Home</button>
+  </div>
+
+  <ion-list *ngIf="permission">
+    <ion-item *ngFor="let user of users">
+      <ion-avatar slot="start">
+        <img src="../../assets/customers-img/{{user.image}}" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{user.name}}</h2>
+        <h3>{{user.state}}</h3>
+        <p>{{user.description}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-label *ngIf="!permission">
+    You don't have permission to view the customers list.
+  </ion-label>
+  
+</ion-content>
