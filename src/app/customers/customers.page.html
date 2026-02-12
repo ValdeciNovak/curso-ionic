@@ -14,9 +14,12 @@
 </ion-header>
 
 <ion-content>
-  <div id="container">
-    <button ion-button [routerLink]="['/home']" class="btn">Go to Home</button>
-  </div>
+
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content refreshingSpinner="bubbles">
+
+      </ion-refresher-content>
+    </ion-refresher>
 
   <ion-list *ngIf="permission">
     <ion-item *ngFor="let user of searchedUser">

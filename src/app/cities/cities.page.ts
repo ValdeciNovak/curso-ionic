@@ -16,7 +16,9 @@ import { RouterLink } from '@angular/router';
 })
 export class CitiesPage implements OnInit {
 
+  token = localStorage.getItem('token');
   cities: any[] = [];
+
 
   constructor(  
     
@@ -27,8 +29,9 @@ export class CitiesPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    
-  this.getCities().subscribe(res=>{
+    console.log(this.token);
+    localStorage.clear();
+    this.getCities().subscribe(res=>{
     console.log(res);
     this.cities=res;
     })

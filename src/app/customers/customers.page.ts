@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonItem, IonLabel, IonList, IonAvatar, IonSearchbar } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonItem, IonLabel, IonList, IonAvatar, IonSearchbar, IonRefresher, IonRefresherContent } from '@ionic/angular/standalone';
 import { RouterLink } from '@angular/router';
 
 import { HttpClient } from '@angular/common/http';
@@ -12,7 +12,7 @@ import { map }from "rxjs/operators";
   templateUrl: './customers.page.html',
   styleUrls: ['./customers.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, RouterLink, IonItem, IonLabel, IonList, IonAvatar, IonSearchbar]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, RouterLink, IonItem, IonLabel, IonList, IonAvatar, IonSearchbar, IonRefresher, IonRefresherContent]
 })
 export class CustomersPage implements OnInit {
 
@@ -56,5 +56,14 @@ export class CustomersPage implements OnInit {
         return user.name.toLowerCase().indexOf(text.toLowerCase()) > -1;
       });
   }
+}
+
+doRefresh(event : any) {
+  this.getUsers();
+  console.log('Begin async operation');
+  setTimeout(() => {
+    console.log('Async operation has ended');
+    event.target.complete();
+  }, 2000);
 }
 }

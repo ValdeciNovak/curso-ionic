@@ -31,6 +31,8 @@ import {
   warningSharp,
   bookmarkOutline,
   bookmarkSharp,
+  logIn,
+  logInOutline,
 } from 'ionicons/icons';
 import { homeOutline, peopleOutline , locationOutline} from 'ionicons/icons';
 
@@ -73,12 +75,18 @@ export class AppComponent {
       url: '/cities',
       icon: 'location-outline',
     },
+      {
+      title: 'Login',
+      url: '/login',
+      icon: 'log-in-outline',
+    },
   ];
   constructor() {
     addIcons({
       homeOutline,
       peopleOutline,
       locationOutline,
+      logInOutline,
 
       mailOutline,
       mailSharp,
