@@ -5,13 +5,14 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonCol, IonRow, IonCard, T
 
 import { HttpClient } from '@angular/common/http';
 import { map }from "rxjs/operators";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cities',
   templateUrl: './cities.page.html',
   styleUrls: ['./cities.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCol, IonRow, IonCard]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCol, IonRow, IonCard, RouterLink]
 })
 export class CitiesPage implements OnInit {
 
